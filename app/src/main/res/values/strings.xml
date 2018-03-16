@@ -4,10 +4,10 @@
     <string name="metric_unit">Metric Unit</string>
     <string name="imperial_unit">Imperial Unit</string>
     <string-array name="metric_array">
-        <item>millimeters</item>
-        <item>centimeters</item>
-        <item>meters</item>
-        <item>kilometers</item>
+        <item>mm</item>
+        <item>cm</item>
+        <item>m</item>
+        <item>km</item>
     </string-array>
     <string-array name="imperial_array">
         <item>inches</item>

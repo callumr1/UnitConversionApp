@@ -34,7 +34,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         metricSpinner = findViewById(R.id.metricSpinner);
         metricText = findViewById(R.id.metricText);
-        metricText.addTextChangedListener(new TextWatcher() {
+
+        imperialSpinner = findViewById(R.id.imperialSpinner);
+        imperialText = findViewById(R.id.imperialText);
+
+        imperialText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -42,19 +46,45 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String currency = imperialSpinner.getSelectedItem().toString();
+                String imperialUnit = imperialSpinner.getSelectedItem().toString();
+                System.out.println(imperialUnit);
+                String metricUnit = metricSpinner.getSelectedItem().toString();
+                System.out.println(metricUnit);
 
                 try {
-                    if (currency.equals("USD")) {
-                        long amount = Long.parseLong(metricText.getText().toString());
-                        long total = (long) (amount * 0.79);
-                        imperialText.setText(String.valueOf(total));
+                    if (imperialUnit.equals("inches")) {
+                        if (metricUnit.equals("mm")) {
+                            if (imperialText.getText().toString().isEmpty()) {
+                                metricText.setText(String.valueOf(0));
+                            }
+                            double amount = Double.parseDouble(imperialText.getText().toString());
+                            System.out.println(amount);
+                            double total = (amount * 25.4);
+                            System.out.println(total);
+                            metricText.setText(String.valueOf(total));
+                        }
+                        else if (metricUnit.equals("cm")) {
+                            if (imperialText.getText().toString().isEmpty()) {
+                                metricText.setText(String.valueOf(0));
+                            }
+                            double amount = Double.parseDouble(imperialText.getText().toString());
+                            System.out.println(amount);
+                            double total = (amount * 2.54);
+                            System.out.println(total);
+                            metricText.setText(String.valueOf(total));
+                        }
+                        else if (metricUnit.equals("m")) {
+                            if (imperialText.getText().toString().isEmpty()) {
+                                metricText.setText(String.valueOf(0));
+                            }
+                            double amount = Double.parseDouble(imperialText.getText().toString());
+                            System.out.println(amount);
+                            double total = (amount * 0.0254);
+                            System.out.println(total);
+                            metricText.setText(String.valueOf(total));
+                        }
                     }
-                } catch (Exception e) {
-                    if (metricText.getText().toString().isEmpty()) {
-                        imperialText.setText(String.valueOf(0));
-                    }
-                }
+                }catch(Exception e){}
             }
 
             @Override
@@ -62,9 +92,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             }
         });
-
-        imperialSpinner = findViewById(R.id.imperialSpinner);
-        imperialText = findViewById(R.id.imperialText);
     }
 
     @Override
@@ -92,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         String imperialUnit = imperialSpinner.getSelectedItem().toString();
         String metricUnit = metricSpinner.getSelectedItem().toString();
-        if(metricUnit.equals("millimeters")){
+        if(metricUnit.equals("mm")){
             if(imperialUnit.equals("inches")){
                 long amount = Long.parseLong(metricText.getText().toString());
                 long total = (long) (amount * 0.03937);
@@ -113,5 +140,3 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
 }
-
-
