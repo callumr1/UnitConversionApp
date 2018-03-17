@@ -11,6 +11,7 @@
     </string-array>
     <string-array name="imperial_array">
         <item>inches</item>
+        <item>foot</item>
         <item>yards</item>
         <item>miles</item>
     </string-array>
