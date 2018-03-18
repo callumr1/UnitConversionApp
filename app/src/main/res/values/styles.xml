@@ -7,10 +7,11 @@
         <item name="colorAccent">@color/pink</item>
     </style>
 
-    <style name="DarkTheme" parent="Theme.AppCompat">
+    <style name="DarkTheme" parent="Base.ThemeOverlay.AppCompat.Dark">
         <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryDark">@color/darkBlue</item>
         <item name="colorAccent">@color/pink</item>
+        <item name="android:background">@color/black</item>
     </style>
 
 </resources>

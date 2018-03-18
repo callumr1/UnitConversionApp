@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        Utils.onActivityCreateSetTheme(this);
         metricSpinner = findViewById(R.id.metricSpinner);
         metricSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

@@ -18,6 +18,8 @@ public class settingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        Utils.onActivityCreateSetTheme(this);
     }
 
     public void onRadioButtonClicked(View view){
@@ -27,14 +29,11 @@ public class settingsActivity extends AppCompatActivity {
         //Checks which radio button is clicked
         switch (view.getId()){
             case R.id.lightThemeButton:
-                if(checked){
-                    Utils.changeToTheme(this, Utils.NORMAL_THEME);
-                }
+                Utils.changeToTheme(this, Utils.NORMAL_THEME);
+
                 break;
             case R.id.darkThemeButton:
-                if(checked){
-                    Utils.changeToTheme(this, Utils.DARK_THEME);
-                }
+                Utils.changeToTheme(this, Utils.DARK_THEME);
                 break;
         }
     }
