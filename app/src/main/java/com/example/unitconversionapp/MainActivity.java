@@ -1,5 +1,6 @@
 package com.example.unitconversionapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity{
 
 
         metricSpinner = findViewById(R.id.metricSpinner);
-        metricSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+        metricSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long id) {
                 String imperialUnit = imperialSpinner.getSelectedItem().toString();
@@ -73,7 +74,8 @@ public class MainActivity extends AppCompatActivity{
                             }
                         }
                     }
-                }catch(Exception e){}
+                } catch (Exception e) {
+                }
 
             }
 
@@ -191,8 +193,7 @@ public class MainActivity extends AppCompatActivity{
                                 }
                             }
                         }
-                    } catch (Exception e) {
-                    }
+                    } catch (Exception e) {}
                 }
             }
 
@@ -202,6 +203,14 @@ public class MainActivity extends AppCompatActivity{
             }
         });
     }
+
+        public void changeToSettingsActivity(View view){
+        // Call when the user taps on the setting button
+            Intent intent = new Intent(this, settingsActivity.class);
+            startActivity(intent);
+        }
+
+
 
     @Override
     public void onResume() {
