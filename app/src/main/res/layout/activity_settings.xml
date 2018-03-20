@@ -37,43 +37,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:layout_constraintVertical_bias="0.232" />
 
-    <RadioButton
-        android:id="@+id/lightThemeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:checked="true"
-        android:text="Light Theme"
-        android:textAlignment="textStart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.641"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:onClick = "onRadioButtonClicked"/>
-
-
-    <RadioButton
-        android:id="@+id/darkThemeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Dark Theme"
-        android:textAlignment="textStart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.632"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/lightThemeButton"
-        app:layout_constraintVertical_bias="0.0"
-        android:onClick = "onRadioButtonClicked"/>
 
     <RadioButton
         android:id="@+id/smallTextButton"
@@ -82,15 +45,12 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
+        android:onClick="onRadioButtonClicked"
         android:text="Small Text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/darkThemeButton"
-        app:layout_constraintVertical_bias="0.009"
-        android:onClick = "onRadioButtonClicked"/>
+        app:layout_constraintStart_toEndOf="@+id/textView5" />
 
     <RadioButton
         android:id="@+id/mediumTextButton"
@@ -126,5 +86,37 @@
         app:layout_constraintTop_toBottomOf="@+id/mediumTextButton"
         app:layout_constraintVertical_bias="0.0"
         android:onClick = "onRadioButtonClicked"/>
+
+    <Button
+        android:id="@+id/lightButton"
+        android:layout_width="154dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Light Theme"
+        app:layout_constraintBottom_toBottomOf="@+id/mediumTextButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/darkButton"
+        android:layout_width="154dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Dark Theme"
+        app:layout_constraintBottom_toBottomOf="@+id/mediumTextButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/lightButton"
+        app:layout_constraintVertical_bias="0.009" />
 
 </android.support.constraint.ConstraintLayout>

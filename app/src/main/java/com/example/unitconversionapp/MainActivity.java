@@ -1,5 +1,7 @@
 package com.example.unitconversionapp;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -27,12 +29,15 @@ public class MainActivity extends AppCompatActivity{
     private Spinner imperialSpinner;
     private EditText imperialText;
 
+    public static Activity activity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
 
-        Utils.onActivityCreateSetTheme(this);
+        activity = this;
         metricSpinner = findViewById(R.id.metricSpinner);
         metricSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -74,8 +79,43 @@ public class MainActivity extends AppCompatActivity{
                             }
                         }
                     }
-                } catch (Exception e) {
-                }
+                } catch (Exception e) {}
+                try {
+                    if (imperialUnit.equals("foot")) {
+                        switch (metricUnit) {
+                            case "mm": {
+                                if (imperialText.getText().toString().isEmpty()) {
+                                    metricText.setText(String.valueOf(0));
+                                }
+                                double amount = Double.parseDouble(imperialText.getText().toString());
+                                double total = (amount * 304.8);
+                                total = RoundNumber(total);
+                                metricText.setText(String.valueOf(total));
+                                break;
+                            }
+                            case "cm": {
+                                if (imperialText.getText().toString().isEmpty()) {
+                                    metricText.setText(String.valueOf(0));
+                                }
+                                double amount = Double.parseDouble(imperialText.getText().toString());
+                                double total = (amount * 30.48);
+                                total = RoundNumber(total);
+                                metricText.setText(String.valueOf(total));
+                                break;
+                            }
+                            case "m": {
+                                if (imperialText.getText().toString().isEmpty()) {
+                                    metricText.setText(String.valueOf(0));
+                                }
+                                double amount = Double.parseDouble(imperialText.getText().toString());
+                                double total = (amount * 0.3048);
+                                total = RoundNumber(total);
+                                metricText.setText(String.valueOf(total));
+                                break;
+                            }
+                        }
+                    }
+                } catch (Exception e) {}
 
             }
 
@@ -134,6 +174,7 @@ public class MainActivity extends AppCompatActivity{
                         }
                     } catch (Exception e) {
                     }
+
                 }
             }
 
@@ -194,6 +235,42 @@ public class MainActivity extends AppCompatActivity{
                             }
                         }
                     } catch (Exception e) {}
+                    try {
+                        if (imperialUnit.equals("foot")) {
+                            switch (metricUnit) {
+                                case "mm": {
+                                    if (imperialText.getText().toString().isEmpty()) {
+                                        metricText.setText(String.valueOf(0));
+                                    }
+                                    double amount = Double.parseDouble(imperialText.getText().toString());
+                                    double total = (amount * 304.8);
+                                    total = RoundNumber(total);
+                                    metricText.setText(String.valueOf(total));
+                                    break;
+                                }
+                                case "cm": {
+                                    if (imperialText.getText().toString().isEmpty()) {
+                                        metricText.setText(String.valueOf(0));
+                                    }
+                                    double amount = Double.parseDouble(imperialText.getText().toString());
+                                    double total = (amount * 30.48);
+                                    total = RoundNumber(total);
+                                    metricText.setText(String.valueOf(total));
+                                    break;
+                                }
+                                case "m": {
+                                    if (imperialText.getText().toString().isEmpty()) {
+                                        metricText.setText(String.valueOf(0));
+                                    }
+                                    double amount = Double.parseDouble(imperialText.getText().toString());
+                                    double total = (amount * 0.3048);
+                                    total = RoundNumber(total);
+                                    metricText.setText(String.valueOf(total));
+                                    break;
+                                }
+                            }
+                        }
+                    } catch (Exception e) {}
                 }
             }
 
@@ -240,4 +317,7 @@ public class MainActivity extends AppCompatActivity{
         return num;
     }
 
+    public static Activity getActivity() {
+        return activity;
+    }
 }
