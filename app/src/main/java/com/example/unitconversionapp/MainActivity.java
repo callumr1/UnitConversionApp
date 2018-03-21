@@ -407,6 +407,15 @@ public class MainActivity extends AppCompatActivity{
 
             }
         });
+
+        OnTouchSwipeListener onTouchSwipeListener = new OnTouchSwipeListener(this) {
+            @Override
+            public void onSwipeLeft() {
+                //your actions
+                Intent intent = new Intent(MainActivity.this, settingsActivity.class);
+                startActivity(intent);
+            }
+        };
     }
 
     public void changeToSettingsActivity(View view){
@@ -448,4 +457,5 @@ public class MainActivity extends AppCompatActivity{
     public static Activity getActivity() {
         return activity;
     }
+
 }
