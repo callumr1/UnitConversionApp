@@ -1,15 +1,17 @@
 package com.example.unitconversionapp;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -29,16 +31,42 @@ public class MainActivity extends AppCompatActivity{
     private Spinner imperialSpinner;
     private EditText imperialText;
 
-    public static Activity activity;
+    private Button settingsButton;
 
+    public static Activity activity;
+    private static int textSize = 2;
+    private ConstraintLayout constraintLayout;
+
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
 
+        settingsButton = findViewById(R.id.settingsButton);
+
+        Intent intent = getIntent();
+        textSize = intent.getIntExtra("Text Size", 2);
+
+        if (textSize == 0) {
+            //metricText.setTextAppearance(android.R.style.TextAppearance_Small);
+            //imperialText.setTextAppearance(android.R.style.TextAppearance_Small);
+            settingsButton.setTextAppearance(android.R.style.TextAppearance_Small);
+        } else if (textSize == 1) {
+            //metricText.setTextAppearance(android.R.style.TextAppearance_Medium);
+            //imperialText.setTextAppearance(android.R.style.TextAppearance_Medium);
+            settingsButton.setTextAppearance(android.R.style.TextAppearance_Medium);
+        } else if (textSize == 2) {
+            //metricText.setTextAppearance(android.R.style.TextAppearance_Large);
+            //imperialText.setTextAppearance(android.R.style.TextAppearance_Large);
+            settingsButton.setTextAppearance(android.R.style.TextAppearance_Large);
+        }
+
         activity = this;
+
         metricSpinner = findViewById(R.id.metricSpinner);
+        // Converts the units when a different unit is selected from the metricSpinner
         metricSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long id) {
@@ -125,6 +153,7 @@ public class MainActivity extends AppCompatActivity{
             }
         });
         metricText = findViewById(R.id.metricText);
+        // Converts the units when the user inputs data into the metricText
         metricText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -224,98 +253,99 @@ public class MainActivity extends AppCompatActivity{
         });
 
         imperialSpinner = findViewById(R.id.imperialSpinner);
-        imperialText = findViewById(R.id.imperialText);
+        // Converts the units when a different unit is selected from the imperialSpinner
         imperialSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long id) {
                 String imperialUnit = imperialSpinner.getSelectedItem().toString();
                 String metricUnit = metricSpinner.getSelectedItem().toString();
-                    try {
-                        if (metricUnit.equals("mm")) {
-                            switch (imperialUnit) {
-                                case "inches": {
-                                    if (metricText.getText().toString().isEmpty()) {
-                                        imperialText.setText(String.valueOf(0));
-                                    }
-                                    double amount = Double.parseDouble(metricText.getText().toString());
-                                    double total = (amount * 0.0393701);
-                                    total = RoundNumber(total);
-                                    imperialText.setText(String.valueOf(total));
-                                    break;
+                try {
+                    if (metricUnit.equals("mm")) {
+                        switch (imperialUnit) {
+                            case "inches": {
+                                if (metricText.getText().toString().isEmpty()) {
+                                    imperialText.setText(String.valueOf(0));
                                 }
-                                case "foot": {
-                                    if (metricText.getText().toString().isEmpty()) {
-                                        imperialText.setText(String.valueOf(0));
-                                    }
-                                    double amount = Double.parseDouble(metricText.getText().toString());
-                                    double total = (amount * 0.00328084);
-                                    total = RoundNumber(total);
-                                    imperialText.setText(String.valueOf(total));
-                                    break;
+                                double amount = Double.parseDouble(metricText.getText().toString());
+                                double total = (amount * 0.0393701);
+                                total = RoundNumber(total);
+                                imperialText.setText(String.valueOf(total));
+                                break;
+                            }
+                            case "foot": {
+                                if (metricText.getText().toString().isEmpty()) {
+                                    imperialText.setText(String.valueOf(0));
                                 }
+                                double amount = Double.parseDouble(metricText.getText().toString());
+                                double total = (amount * 0.00328084);
+                                total = RoundNumber(total);
+                                imperialText.setText(String.valueOf(total));
+                                break;
                             }
                         }
-                    } catch (Exception e) {}
-                    try {
-                        if (metricUnit.equals("cm")) {
-                            switch (imperialUnit) {
-                                case "inches": {
-                                    if (metricText.getText().toString().isEmpty()) {
-                                        imperialText.setText(String.valueOf(0));
-                                    }
-                                    double amount = Double.parseDouble(metricText.getText().toString());
-                                    double total = (amount * 0.393701);
-                                    total = RoundNumber(total);
-                                    imperialText.setText(String.valueOf(total));
-                                    break;
+                    }
+                } catch (Exception e) {}
+                try {
+                    if (metricUnit.equals("cm")) {
+                        switch (imperialUnit) {
+                            case "inches": {
+                                if (metricText.getText().toString().isEmpty()) {
+                                    imperialText.setText(String.valueOf(0));
                                 }
-                                case "foot": {
-                                    if (metricText.getText().toString().isEmpty()) {
-                                        imperialText.setText(String.valueOf(0));
-                                    }
-                                    double amount = Double.parseDouble(metricText.getText().toString());
-                                    double total = (amount * 0.0328084);
-                                    total = RoundNumber(total);
-                                    imperialText.setText(String.valueOf(total));
-                                    break;
+                                double amount = Double.parseDouble(metricText.getText().toString());
+                                double total = (amount * 0.393701);
+                                total = RoundNumber(total);
+                                imperialText.setText(String.valueOf(total));
+                                break;
+                            }
+                            case "foot": {
+                                if (metricText.getText().toString().isEmpty()) {
+                                    imperialText.setText(String.valueOf(0));
                                 }
+                                double amount = Double.parseDouble(metricText.getText().toString());
+                                double total = (amount * 0.0328084);
+                                total = RoundNumber(total);
+                                imperialText.setText(String.valueOf(total));
+                                break;
                             }
                         }
-                    } catch (Exception e) {}
-                    try {
-                        if (metricUnit.equals("m")) {
-                            switch (imperialUnit) {
-                                case "inches": {
-                                    if (metricText.getText().toString().isEmpty()) {
-                                        imperialText.setText(String.valueOf(0));
-                                    }
-                                    double amount = Double.parseDouble(metricText.getText().toString());
-                                    double total = (amount * 39.3701);
-                                    total = RoundNumber(total);
-                                    imperialText.setText(String.valueOf(total));
-                                    break;
+                    }
+                } catch (Exception e) {}
+                try {
+                    if (metricUnit.equals("m")) {
+                        switch (imperialUnit) {
+                            case "inches": {
+                                if (metricText.getText().toString().isEmpty()) {
+                                    imperialText.setText(String.valueOf(0));
                                 }
-                                case "foot": {
-                                    if (metricText.getText().toString().isEmpty()) {
-                                        imperialText.setText(String.valueOf(0));
-                                    }
-                                    double amount = Double.parseDouble(metricText.getText().toString());
-                                    double total = (amount * 3.28084);
-                                    total = RoundNumber(total);
-                                    imperialText.setText(String.valueOf(total));
-                                    break;
+                                double amount = Double.parseDouble(metricText.getText().toString());
+                                double total = (amount * 39.3701);
+                                total = RoundNumber(total);
+                                imperialText.setText(String.valueOf(total));
+                                break;
+                            }
+                            case "foot": {
+                                if (metricText.getText().toString().isEmpty()) {
+                                    imperialText.setText(String.valueOf(0));
                                 }
+                                double amount = Double.parseDouble(metricText.getText().toString());
+                                double total = (amount * 3.28084);
+                                total = RoundNumber(total);
+                                imperialText.setText(String.valueOf(total));
+                                break;
                             }
                         }
-                    } catch (Exception e) {}
-                }
+                    }
+                } catch (Exception e) {}
+            }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
-
+        imperialText = findViewById(R.id.imperialText);
+        // Converts the units when the user inputs data into the imperialText
         imperialText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -408,23 +438,22 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        OnTouchSwipeListener onTouchSwipeListener = new OnTouchSwipeListener(this) {
+        constraintLayout = findViewById(R.id.mainLayout);
+        constraintLayout.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this){
             @Override
             public void onSwipeLeft() {
-                //your actions
                 Intent intent = new Intent(MainActivity.this, settingsActivity.class);
                 startActivity(intent);
             }
-        };
+        });
     }
 
     public void changeToSettingsActivity(View view){
         // Call when the user taps on the setting button
-            Intent intent = new Intent(this, settingsActivity.class);
-            startActivity(intent);
+        Intent intent = new Intent(this, settingsActivity.class);
+        intent.putExtra("Text Size", textSize);
+        startActivity(intent);
         }
-
-
 
     @Override
     public void onResume() {
@@ -457,5 +486,4 @@ public class MainActivity extends AppCompatActivity{
     public static Activity getActivity() {
         return activity;
     }
-
 }

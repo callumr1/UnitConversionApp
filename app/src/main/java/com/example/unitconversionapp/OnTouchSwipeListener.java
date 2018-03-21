@@ -9,7 +9,7 @@ import android.view.View;
  * Created by Callum Robertson on 21/03/2018.
  */
 
-public class OnTouchSwipeListener {
+public class OnTouchSwipeListener implements View.OnTouchListener {
     private final GestureDetector gestureDetector;
     private Context context;
 

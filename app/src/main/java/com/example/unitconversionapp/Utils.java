@@ -11,6 +11,10 @@ class Utils {
     private static int sTheme;
     final static int  NORMAL_THEME = 0;
     final static int DARK_THEME = 1;
+    private static int textSize;
+    final static int SMALL_TEXT = 0;
+    final static int MEDIUM_TEXT = 1;
+    final static int LARGE_TEXT = 2;
 
     static void changeToTheme(Activity activity, int theme)
     {

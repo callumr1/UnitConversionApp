@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="blue">#3F51B5</color>
-    <color name="darkBlue">#303F9F</color>
-    <color name="pink">#FF4081</color>
+    <color name="blue">#2471A3</color>
+    <color name="darkBlue">#1F618D</color>
+    <color name="lightBlue">#5DADE2</color>
     <color name="black">#202020</color>
 </resources>

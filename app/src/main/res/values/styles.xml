@@ -4,13 +4,13 @@
     <style name="NormalTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryDark">@color/darkBlue</item>
-        <item name="colorAccent">@color/pink</item>
+        <item name="colorAccent">@color/lightBlue</item>
     </style>
 
     <style name="DarkTheme" parent="Base.ThemeOverlay.AppCompat.Dark">
         <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryDark">@color/darkBlue</item>
-        <item name="colorAccent">@color/pink</item>
+        <item name="colorAccent">@color/lightBlue</item>
         <item name="android:background">@color/black</item>
     </style>
 
