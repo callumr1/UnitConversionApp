@@ -1,6 +1,5 @@
 package com.example.unitconversionapp;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,7 +36,6 @@ public class MainActivity extends AppCompatActivity{
     private static int textSize = 2;
     private ConstraintLayout constraintLayout;
 
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -443,6 +441,7 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onSwipeLeft() {
                 Intent intent = new Intent(MainActivity.this, settingsActivity.class);
+                intent.putExtra("Text Size", textSize);
                 startActivity(intent);
             }
         });
