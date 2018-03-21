@@ -135,7 +135,6 @@ public class MainActivity extends AppCompatActivity{
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String imperialUnit = imperialSpinner.getSelectedItem().toString();
                 String metricUnit = metricSpinner.getSelectedItem().toString();
-
                 if (metricText.hasFocus()) {
                     try {
                         if (metricUnit.equals("mm")) {
@@ -160,21 +159,61 @@ public class MainActivity extends AppCompatActivity{
                                     imperialText.setText(String.valueOf(total));
                                     break;
                                 }
-                                case "yards": {
+                            }
+                        }
+                    } catch (Exception e) {}
+                    try {
+                        if (metricUnit.equals("cm")) {
+                            switch (imperialUnit) {
+                                case "inches": {
                                     if (metricText.getText().toString().isEmpty()) {
                                         imperialText.setText(String.valueOf(0));
                                     }
                                     double amount = Double.parseDouble(metricText.getText().toString());
-                                    double total = (amount * 0.00109361);
+                                    double total = (amount * 0.393701);
+                                    total = RoundNumber(total);
+                                    imperialText.setText(String.valueOf(total));
+                                    break;
+                                }
+                                case "foot": {
+                                    if (metricText.getText().toString().isEmpty()) {
+                                        imperialText.setText(String.valueOf(0));
+                                    }
+                                    double amount = Double.parseDouble(metricText.getText().toString());
+                                    double total = (amount * 0.0328084);
                                     total = RoundNumber(total);
                                     imperialText.setText(String.valueOf(total));
                                     break;
                                 }
                             }
                         }
-                    } catch (Exception e) {
-                    }
-
+                    } catch (Exception e) {}
+                    try {
+                        if (metricUnit.equals("m")) {
+                            switch (imperialUnit) {
+                                case "inches": {
+                                    if (metricText.getText().toString().isEmpty()) {
+                                        imperialText.setText(String.valueOf(0));
+                                    }
+                                    double amount = Double.parseDouble(metricText.getText().toString());
+                                    double total = (amount * 39.3701);
+                                    total = RoundNumber(total);
+                                    imperialText.setText(String.valueOf(total));
+                                    break;
+                                }
+                                case "foot": {
+                                    if (metricText.getText().toString().isEmpty()) {
+                                        imperialText.setText(String.valueOf(0));
+                                    }
+                                    double amount = Double.parseDouble(metricText.getText().toString());
+                                    double total = (amount * 3.28084);
+                                    total = RoundNumber(total);
+                                    imperialText.setText(String.valueOf(total));
+                                    break;
+                                }
+                            }
+                        }
+                    } catch (Exception e) {}
                 }
             }
 
@@ -186,6 +225,96 @@ public class MainActivity extends AppCompatActivity{
 
         imperialSpinner = findViewById(R.id.imperialSpinner);
         imperialText = findViewById(R.id.imperialText);
+        imperialSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long id) {
+                String imperialUnit = imperialSpinner.getSelectedItem().toString();
+                String metricUnit = metricSpinner.getSelectedItem().toString();
+                    try {
+                        if (metricUnit.equals("mm")) {
+                            switch (imperialUnit) {
+                                case "inches": {
+                                    if (metricText.getText().toString().isEmpty()) {
+                                        imperialText.setText(String.valueOf(0));
+                                    }
+                                    double amount = Double.parseDouble(metricText.getText().toString());
+                                    double total = (amount * 0.0393701);
+                                    total = RoundNumber(total);
+                                    imperialText.setText(String.valueOf(total));
+                                    break;
+                                }
+                                case "foot": {
+                                    if (metricText.getText().toString().isEmpty()) {
+                                        imperialText.setText(String.valueOf(0));
+                                    }
+                                    double amount = Double.parseDouble(metricText.getText().toString());
+                                    double total = (amount * 0.00328084);
+                                    total = RoundNumber(total);
+                                    imperialText.setText(String.valueOf(total));
+                                    break;
+                                }
+                            }
+                        }
+                    } catch (Exception e) {}
+                    try {
+                        if (metricUnit.equals("cm")) {
+                            switch (imperialUnit) {
+                                case "inches": {
+                                    if (metricText.getText().toString().isEmpty()) {
+                                        imperialText.setText(String.valueOf(0));
+                                    }
+                                    double amount = Double.parseDouble(metricText.getText().toString());
+                                    double total = (amount * 0.393701);
+                                    total = RoundNumber(total);
+                                    imperialText.setText(String.valueOf(total));
+                                    break;
+                                }
+                                case "foot": {
+                                    if (metricText.getText().toString().isEmpty()) {
+                                        imperialText.setText(String.valueOf(0));
+                                    }
+                                    double amount = Double.parseDouble(metricText.getText().toString());
+                                    double total = (amount * 0.0328084);
+                                    total = RoundNumber(total);
+                                    imperialText.setText(String.valueOf(total));
+                                    break;
+                                }
+                            }
+                        }
+                    } catch (Exception e) {}
+                    try {
+                        if (metricUnit.equals("m")) {
+                            switch (imperialUnit) {
+                                case "inches": {
+                                    if (metricText.getText().toString().isEmpty()) {
+                                        imperialText.setText(String.valueOf(0));
+                                    }
+                                    double amount = Double.parseDouble(metricText.getText().toString());
+                                    double total = (amount * 39.3701);
+                                    total = RoundNumber(total);
+                                    imperialText.setText(String.valueOf(total));
+                                    break;
+                                }
+                                case "foot": {
+                                    if (metricText.getText().toString().isEmpty()) {
+                                        imperialText.setText(String.valueOf(0));
+                                    }
+                                    double amount = Double.parseDouble(metricText.getText().toString());
+                                    double total = (amount * 3.28084);
+                                    total = RoundNumber(total);
+                                    imperialText.setText(String.valueOf(total));
+                                    break;
+                                }
+                            }
+                        }
+                    } catch (Exception e) {}
+                }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         imperialText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -197,7 +326,6 @@ public class MainActivity extends AppCompatActivity{
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String imperialUnit = imperialSpinner.getSelectedItem().toString();
                 String metricUnit = metricSpinner.getSelectedItem().toString();
-
                 if (imperialText.hasFocus()) {
                     try {
                         if (imperialUnit.equals("inches")) {
@@ -281,7 +409,7 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
-        public void changeToSettingsActivity(View view){
+    public void changeToSettingsActivity(View view){
         // Call when the user taps on the setting button
             Intent intent = new Intent(this, settingsActivity.class);
             startActivity(intent);
