@@ -19,4 +19,8 @@
         <item>fahrenheit</item>
         <item>kelvin</item>
     </string-array>
+    <string-array name="conversion_array">
+        <item>measurements</item>
+        <item>temperature</item>
+    </string-array>
 </resources>

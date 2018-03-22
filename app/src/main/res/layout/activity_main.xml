@@ -43,7 +43,7 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/toTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -95,7 +95,7 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/fromTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"

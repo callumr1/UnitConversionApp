@@ -5,6 +5,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 public class settingsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -102,6 +103,7 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
                 darkButton.setTextAppearance(android.R.style.TextAppearance_Medium);
                 break;
             case R.id.largeTextButton:
+                textSize = 2;
                 smallTextButton.setTextAppearance(android.R.style.TextAppearance_Large);
                 mediumTextButton.setTextAppearance(android.R.style.TextAppearance_Large);
                 largeTextButton.setTextAppearance(android.R.style.TextAppearance_Large);

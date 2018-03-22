@@ -13,6 +13,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by Callum on 12/03/2018.
@@ -22,7 +25,7 @@ import android.widget.Spinner;
  *  - Event handling
  */
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     private Spinner metricSpinner;
     private EditText metricText;
@@ -31,6 +34,8 @@ public class MainActivity extends AppCompatActivity{
     private EditText imperialText;
 
     private Button settingsButton;
+    private TextView fromTextView;
+    private TextView toTextView;
 
     public static Activity activity;
     private static int textSize = 2;
@@ -43,6 +48,8 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
         settingsButton = findViewById(R.id.settingsButton);
+        fromTextView = findViewById(R.id.fromTextView);
+        toTextView = findViewById(R.id.toTextView);
 
         Intent intent = getIntent();
         textSize = intent.getIntExtra("Text Size", 2);
@@ -51,14 +58,20 @@ public class MainActivity extends AppCompatActivity{
             //metricText.setTextAppearance(android.R.style.TextAppearance_Small);
             //imperialText.setTextAppearance(android.R.style.TextAppearance_Small);
             settingsButton.setTextAppearance(android.R.style.TextAppearance_Small);
+            fromTextView.setTextAppearance(android.R.style.TextAppearance_Small);
+            toTextView.setTextAppearance(android.R.style.TextAppearance_Small);
         } else if (textSize == 1) {
             //metricText.setTextAppearance(android.R.style.TextAppearance_Medium);
             //imperialText.setTextAppearance(android.R.style.TextAppearance_Medium);
             settingsButton.setTextAppearance(android.R.style.TextAppearance_Medium);
+            fromTextView.setTextAppearance(android.R.style.TextAppearance_Medium);
+            toTextView.setTextAppearance(android.R.style.TextAppearance_Medium);
         } else if (textSize == 2) {
             //metricText.setTextAppearance(android.R.style.TextAppearance_Large);
             //imperialText.setTextAppearance(android.R.style.TextAppearance_Large);
             settingsButton.setTextAppearance(android.R.style.TextAppearance_Large);
+            fromTextView.setTextAppearance(android.R.style.TextAppearance_Large);
+            toTextView.setTextAppearance(android.R.style.TextAppearance_Large);
         }
 
         activity = this;
@@ -105,7 +118,8 @@ public class MainActivity extends AppCompatActivity{
                             }
                         }
                     }
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                }
                 try {
                     if (imperialUnit.equals("foot")) {
                         switch (metricUnit) {
@@ -141,7 +155,8 @@ public class MainActivity extends AppCompatActivity{
                             }
                         }
                     }
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                }
 
             }
 
@@ -188,7 +203,8 @@ public class MainActivity extends AppCompatActivity{
                                 }
                             }
                         }
-                    } catch (Exception e) {}
+                    } catch (Exception e) {
+                    }
                     try {
                         if (metricUnit.equals("cm")) {
                             switch (imperialUnit) {
@@ -214,7 +230,8 @@ public class MainActivity extends AppCompatActivity{
                                 }
                             }
                         }
-                    } catch (Exception e) {}
+                    } catch (Exception e) {
+                    }
                     try {
                         if (metricUnit.equals("m")) {
                             switch (imperialUnit) {
@@ -240,7 +257,8 @@ public class MainActivity extends AppCompatActivity{
                                 }
                             }
                         }
-                    } catch (Exception e) {}
+                    } catch (Exception e) {
+                    }
                 }
             }
 
@@ -282,7 +300,8 @@ public class MainActivity extends AppCompatActivity{
                             }
                         }
                     }
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                }
                 try {
                     if (metricUnit.equals("cm")) {
                         switch (imperialUnit) {
@@ -308,7 +327,8 @@ public class MainActivity extends AppCompatActivity{
                             }
                         }
                     }
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                }
                 try {
                     if (metricUnit.equals("m")) {
                         switch (imperialUnit) {
@@ -334,7 +354,8 @@ public class MainActivity extends AppCompatActivity{
                             }
                         }
                     }
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                }
             }
 
             @Override
@@ -390,7 +411,8 @@ public class MainActivity extends AppCompatActivity{
                                 }
                             }
                         }
-                    } catch (Exception e) {}
+                    } catch (Exception e) {
+                    }
                     try {
                         if (imperialUnit.equals("foot")) {
                             switch (metricUnit) {
@@ -426,7 +448,8 @@ public class MainActivity extends AppCompatActivity{
                                 }
                             }
                         }
-                    } catch (Exception e) {}
+                    } catch (Exception e) {
+                    }
                 }
             }
 
@@ -437,7 +460,7 @@ public class MainActivity extends AppCompatActivity{
         });
 
         constraintLayout = findViewById(R.id.mainLayout);
-        constraintLayout.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this){
+        constraintLayout.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
             @Override
             public void onSwipeLeft() {
                 Intent intent = new Intent(MainActivity.this, settingsActivity.class);
@@ -447,12 +470,12 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
-    public void changeToSettingsActivity(View view){
+    public void changeToSettingsActivity(View view) {
         // Call when the user taps on the setting button
         Intent intent = new Intent(this, settingsActivity.class);
         intent.putExtra("Text Size", textSize);
         startActivity(intent);
-        }
+    }
 
     @Override
     public void onResume() {
