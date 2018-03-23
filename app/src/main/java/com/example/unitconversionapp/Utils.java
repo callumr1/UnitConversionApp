@@ -5,6 +5,8 @@ import android.content.Intent;
 
 /**
  * Created by Callum on 18/03/2018.
+ *
+ * Handles the changing of themes which is called from the settingsActivity
  */
 
 class Utils {

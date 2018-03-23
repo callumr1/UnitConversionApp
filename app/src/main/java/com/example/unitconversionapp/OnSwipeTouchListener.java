@@ -6,7 +6,9 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * Created by callum on 21/03/2018.
+ * Created by Callum on 21/03/2018.
+ *
+ * This class allows the user to swipe between the two activities
  */
 
 public class OnSwipeTouchListener implements View.OnTouchListener {

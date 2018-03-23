@@ -15,14 +15,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 /**
  * Created by Callum on 12/03/2018.
  *
  * This is the main activity, it is responsible for most of the functionality of the app including:
  *  - Currency Conversion Calculation
- *  - Event handling
+ *  - Handling of text input, spinner changing
  */
 
 public class MainActivity extends AppCompatActivity {
