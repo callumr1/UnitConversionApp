@@ -53,20 +53,14 @@ public class MainActivity extends AppCompatActivity {
         textSize = intent.getIntExtra("Text Size", 2);
 
         if (textSize == 0) {
-            //metricText.setTextAppearance(android.R.style.TextAppearance_Small);
-            //imperialText.setTextAppearance(android.R.style.TextAppearance_Small);
             settingsButton.setTextAppearance(android.R.style.TextAppearance_Small);
             fromTextView.setTextAppearance(android.R.style.TextAppearance_Small);
             toTextView.setTextAppearance(android.R.style.TextAppearance_Small);
         } else if (textSize == 1) {
-            //metricText.setTextAppearance(android.R.style.TextAppearance_Medium);
-            //imperialText.setTextAppearance(android.R.style.TextAppearance_Medium);
             settingsButton.setTextAppearance(android.R.style.TextAppearance_Medium);
             fromTextView.setTextAppearance(android.R.style.TextAppearance_Medium);
             toTextView.setTextAppearance(android.R.style.TextAppearance_Medium);
         } else if (textSize == 2) {
-            //metricText.setTextAppearance(android.R.style.TextAppearance_Large);
-            //imperialText.setTextAppearance(android.R.style.TextAppearance_Large);
             settingsButton.setTextAppearance(android.R.style.TextAppearance_Large);
             fromTextView.setTextAppearance(android.R.style.TextAppearance_Large);
             toTextView.setTextAppearance(android.R.style.TextAppearance_Large);
